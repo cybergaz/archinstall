@@ -1,6 +1,6 @@
 #part1
 clear
-echo "Welcome to Gaz's arch installer script"
+echo "Welcome to Gaz's arch install script"
 sleep 1
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 10/" /etc/pacman.conf
 reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
@@ -61,7 +61,7 @@ sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -Sy --noconfirm iwd rsync zip unzip unrar git gvim ttf-jetbrains-mono
+pacman -Sy --noconfirm iwd rsync zip unzip unrar git vim ttf-jetbrains-mono
 
 mkdir /etc/iwd
 echo -e "[General]\nEnableNetworkConfiguration=true\n\n[Network]\nEnableIPv6=true" >/etc/iwd/main.conf
@@ -78,5 +78,9 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 
 git clone https://github.com/cybergaz/scripts /home/$username/scripts
+chown $username /home/$username/scripts
+chmod u+rwx /home/$username/scripts
 
-echo -e "\n\nPre-Installation Finish Reboot now"
+echo -e "\n\n\n\n--------------------------------------------------"
+echo -e "\tArch Installation Finished Reboot now"
+echo "--------------------------------------------------"
