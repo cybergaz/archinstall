@@ -76,11 +76,13 @@ echo "%wheel ALL=(ALL:ALL) ALL" >>/etc/sudoers
 sed -i 's/#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
+sed -i "s/# deny = 3/deny = 3/" /etc/security/faillock.conf
+sed -i "s/# unlock_time = 600/unlock_time = 60/" /etc/security/faillock.conf
 
 git clone https://github.com/cybergaz/scripts /home/$username/scripts
 chown $username /home/$username/scripts
 chmod u+rwx /home/$username/scripts
 
 echo -e "\n\n\n\n--------------------------------------------------"
-echo -e "\tArch Installation Finished Reboot now"
+echo -e "\tarch installation finished, you can exit and reboot now"
 echo "--------------------------------------------------"
